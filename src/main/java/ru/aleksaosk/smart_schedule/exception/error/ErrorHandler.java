@@ -9,7 +9,12 @@ import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import ru.aleksaosk.smart_schedule.exception.*;
+import ru.aleksaosk.smart_schedule.exception.ConflictException;
+import ru.aleksaosk.smart_schedule.exception.DuplicatedException;
+import ru.aleksaosk.smart_schedule.exception.EmailAlreadyUsedException;
+import ru.aleksaosk.smart_schedule.exception.LoginAlreadyUsedException;
+import ru.aleksaosk.smart_schedule.exception.NotFoundException;
+import ru.aleksaosk.smart_schedule.exception.ValidationException;
 
 import java.io.UnsupportedEncodingException;
 import java.time.LocalDateTime;

@@ -1,13 +1,14 @@
 package ru.aleksaosk.smart_schedule.user;
 
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
-import ru.aleksaosk.smart_schedule.user.dto.UserRequestDto;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import ru.aleksaosk.smart_schedule.user.dto.UserResponseDto;
+import ru.aleksaosk.smart_schedule.user.service.UserServiceAdmin;
 
 import java.util.List;
 
@@ -16,13 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @Validated
 public class UserAdminController {
-    private UserService userService;
-
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public UserResponseDto addNewUser(@RequestBody @Valid UserRequestDto requestDto) {
-        return userService.addNewUser(requestDto);
-    }
+    private UserServiceAdmin userService;
 
     @GetMapping
     public List<UserResponseDto> getAllUsersDto() {
@@ -32,11 +27,5 @@ public class UserAdminController {
     @GetMapping("/{userId}")
     public UserResponseDto getUserDto(@Positive(message = "userId is not correct") @PathVariable("userId") Long id) {
         return userService.getUserDto(id);
-    }
-
-    @DeleteMapping("/{userId}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteUser(@Positive(message = "userId is not correct") @PathVariable("userId") Long id) {
-        userService.deleteUser(id);
     }
 }

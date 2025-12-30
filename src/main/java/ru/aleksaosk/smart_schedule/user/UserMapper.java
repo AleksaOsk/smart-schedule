@@ -1,29 +1,32 @@
 package ru.aleksaosk.smart_schedule.user;
 
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.MappingConstants;
 import ru.aleksaosk.smart_schedule.user.dto.UserRequestDto;
 import ru.aleksaosk.smart_schedule.user.dto.UserResponseDto;
+import ru.aleksaosk.smart_schedule.user.dto.UserUpdateRequestDto;
 
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
-public final class UserMapper {
-    public static User mapToUser(UserRequestDto request) {
-        User user = new User();
-        user.setName(request.getName());
-        user.setLogin(request.getLogin());
-        user.setPassword(request.getPassword());
-        user.setEmail(request.getEmail());
-        return user;
+@Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
+public interface UserMapper {
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "created", ignore = true)
+    User mapToUser(UserRequestDto request);
+
+    default void mapToUser(User user, UserUpdateRequestDto userRequestDto) {
+        if (!userRequestDto.getName().isBlank()) {
+            user.setName(userRequestDto.getName());
+        }
+        if (!userRequestDto.getPassword().isBlank()) {
+            user.setPassword(userRequestDto.getPassword());
+        }
+        if (!userRequestDto.getEmail().isBlank()) {
+            user.setEmail(userRequestDto.getEmail());
+        }
+        if (!userRequestDto.getLogin().isBlank()) {
+            user.setLogin(userRequestDto.getLogin());
+        }
     }
 
-    public static UserResponseDto mapToUserResponseDto(User user) {
-        UserResponseDto userResponseDto = new UserResponseDto();
-        userResponseDto.setId(user.getId());
-        userResponseDto.setName(user.getName());
-        userResponseDto.setLogin(user.getLogin());
-        userResponseDto.setPassword(user.getPassword());
-        userResponseDto.setEmail(user.getEmail());
-        userResponseDto.setCreated(user.getCreated());
-        return userResponseDto;
-    }
+    UserResponseDto mapToUserResponseDto(User user);
 }
