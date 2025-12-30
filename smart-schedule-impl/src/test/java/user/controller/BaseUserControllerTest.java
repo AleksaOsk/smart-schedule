@@ -8,6 +8,7 @@ import org.mapstruct.factory.Mappers;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.context.annotation.Profile;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 import ru.aleksaosk.smart_schedule.user.User;
@@ -22,6 +23,7 @@ import ru.aleksaosk.smart_schedule.user.service.UserServicePrivate;
 import java.time.LocalDateTime;
 
 @Slf4j
+@Profile("test")
 @ExtendWith(MockitoExtension.class)
 @WebMvcTest(UserPrivateController.class)
 public abstract class BaseUserControllerTest {
