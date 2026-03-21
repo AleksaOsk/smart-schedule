@@ -1,13 +1,13 @@
 package ru.aleksaosk.smart_schedule.task;
 
-//@Entity
-//@Getter
-//@Setter
-//@AllArgsConstructor
-//@NoArgsConstructor(access = AccessLevel.PROTECTED)
-//@ToString
-//@Table(name = "tasks", schema = "public")
-//@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+// @Entity
+// @Getter
+// @Setter
+// @AllArgsConstructor
+// @NoArgsConstructor(access = AccessLevel.PROTECTED)
+// @ToString
+// @Table(name = "tasks", schema = "public")
+// @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Task {
 //    @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)

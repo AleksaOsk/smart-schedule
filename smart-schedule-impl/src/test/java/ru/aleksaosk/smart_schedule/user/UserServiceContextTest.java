@@ -1,4 +1,4 @@
-package user;
+package ru.aleksaosk.smart_schedule.user;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

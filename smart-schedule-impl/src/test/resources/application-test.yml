@@ -1,4 +1,17 @@
 spring:
+  application:
+    name: Smart Schedule API
+    version: 1.0
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+  sql:
+    init:
+      mode: always
   config:
     activate:
       on-profile: test
@@ -7,3 +20,8 @@ spring:
     url: jdbc:h2:mem:smart-schedule
     username: smart-schedule
     password: smart-schedule
+
+server:
+  port: 4114
+  servlet:
+    context-path: /smart-schedule
