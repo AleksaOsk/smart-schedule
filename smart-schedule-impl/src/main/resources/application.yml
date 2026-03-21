@@ -1,7 +1,12 @@
 server:
   port: 8080
+  servlet:
+    context-path: /smart-schedule
 
 spring:
+  application:
+      name: Smart Schedule API
+      version: 1.0
   jpa:
     hibernate:
       ddl-auto: none
@@ -16,11 +21,23 @@ spring:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/smart-schedule
     username: postgres
-    password: 1234
-  config:
-    activate:
-      on-profile: test
+    password: postgres
 logging:
   level:
-    org.hibernate.SQL: DEBUG
-    org.hibernate.type.descriptor.sql.BasicTypeDescriptor: TRACE
+    org.springframework.web: debug
+    ru.aleksaosk: debug
+    org.hibernate: info
+    com.zaxxer: info
+    org.springdoc: info
+
+
+springdoc:
+  swagger-ui:
+    enabled: true
+    operations-sorter: alpha
+    tags-sorter: alpha
+    doc-expansion: none
+    display-request-duration: true
+    filter: true
+  writer-with-order-by-keys: true
+  override-with-generic-response: false

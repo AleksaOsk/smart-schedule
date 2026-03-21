@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 
 @RestControllerAdvice
 @Slf4j
-class ErrorHandler {
+class RestControllerExceptionAdvice {
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss.SSS dd-MM-yyyy");
 
     @ExceptionHandler
@@ -82,8 +82,8 @@ class ErrorHandler {
     }
 
     @ExceptionHandler
-    @ResponseStatus(HttpStatus.BAD_REQUEST) //400
-    //исключение при срабатывании аннотации на отдельных полях (переменные пути)
+    @ResponseStatus(HttpStatus.BAD_REQUEST) // 400
+    // исключение при срабатывании аннотации на отдельных полях (переменные пути)
     public ErrorResponse handleAnnotationsField(ConstraintViolationException e) {
         String response = e.getConstraintViolations()
                 .stream()
@@ -97,7 +97,7 @@ class ErrorHandler {
 
     @ExceptionHandler
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    //исключение при срабатывании аннотации на объектах
+    // исключение при срабатывании аннотации на объектах
     public ErrorResponse handleAnnotationsObject(MethodArgumentNotValidException e) {
         String response = Objects.requireNonNull(e.getBindingResult().getFieldError()).getDefaultMessage();
         log.error("Пользователь указал некорректные данные." + response);
@@ -106,9 +106,8 @@ class ErrorHandler {
                 response, now.format(formatter));
     }
 
-
     @ExceptionHandler(MissingServletRequestParameterException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST) //400
+    @ResponseStatus(HttpStatus.BAD_REQUEST) // 400
     public ErrorResponse handleMissingParams(MissingServletRequestParameterException e) {
         String parameterName = Objects.requireNonNull(e.getParameterName());
         log.error("Пользователь не указал обязательный параметр: " + parameterName);

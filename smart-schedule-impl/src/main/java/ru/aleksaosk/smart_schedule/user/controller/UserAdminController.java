@@ -1,4 +1,4 @@
-package ru.aleksaosk.smart_schedule.user;
+package ru.aleksaosk.smart_schedule.user.controller;
 
 import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
@@ -13,7 +13,7 @@ import ru.aleksaosk.smart_schedule.user.service.UserServiceAdmin;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/admin/users")
+@RequestMapping(path = "/api/admin/users")
 @AllArgsConstructor
 @Validated
 public class UserAdminController {

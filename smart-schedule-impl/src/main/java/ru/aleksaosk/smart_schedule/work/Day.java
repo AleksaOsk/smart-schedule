@@ -1,13 +1,13 @@
 package ru.aleksaosk.smart_schedule.work;
 
-//@Entity
-//@Getter
-//@Setter
-//@AllArgsConstructor
-//@NoArgsConstructor(access = AccessLevel.PROTECTED)
-//@ToString
-//@Table(name = "weekdays", schema = "public")
-//@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+// @Entity
+// @Getter
+// @Setter
+// @AllArgsConstructor
+// @NoArgsConstructor(access = AccessLevel.PROTECTED)
+// @ToString
+// @Table(name = "weekdays", schema = "public")
+// @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Day {
 //    @Id
 //    @EqualsAndHashCode.Include
