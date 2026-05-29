@@ -1,5 +1,4 @@
 server:
-  port: 8080
   servlet:
     context-path: /smart-schedule
 
@@ -21,6 +20,10 @@ spring:
     url: ${DB_URL}
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
+  flyway:
+    schemas: smart_schedule
+    locations: classpath:db/migration
+    baseline-on-migrate: true
 logging:
   level:
     org.springframework.web: debug
