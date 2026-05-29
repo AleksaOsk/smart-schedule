@@ -9,8 +9,6 @@ spring:
     version: 1.0
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
-    hibernate:
-      ddl-auto: none
     show-sql: false
     properties:
       hibernate:
