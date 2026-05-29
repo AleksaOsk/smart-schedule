@@ -8,6 +8,7 @@ spring:
     name: Smart Schedule API
     version: 1.0
   jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: none
     show-sql: false
