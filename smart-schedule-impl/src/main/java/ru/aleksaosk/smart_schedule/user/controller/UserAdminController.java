@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import ru.aleksaosk.smart_schedule.user.controller.api.UserAdminApi;
 import ru.aleksaosk.smart_schedule.user.dto.UserResponseDto;
 import ru.aleksaosk.smart_schedule.user.service.UserServiceAdmin;
 
@@ -16,7 +17,7 @@ import java.util.List;
 @RequestMapping(path = "/api/admin/users")
 @AllArgsConstructor
 @Validated
-public class UserAdminController {
+public class UserAdminController implements UserAdminApi {
     private UserServiceAdmin userService;
 
     @GetMapping
