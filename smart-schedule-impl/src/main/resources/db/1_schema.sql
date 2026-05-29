@@ -1,1 +1,1 @@
-CREATE DATABASE IF NOT EXISTS smart_schedule;
+create schema if not exists smart_schedule;
