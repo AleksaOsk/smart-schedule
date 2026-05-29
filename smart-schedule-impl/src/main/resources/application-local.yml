@@ -1,5 +1,6 @@
 server:
   port: 8080
+  base-url: http://localhost:8080
   servlet:
     context-path: /smart-schedule
 
@@ -19,9 +20,9 @@ spring:
       mode: always
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: ${DB_URL}
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
+    url: jdbc:postgresql://localhost:5432/smart-schedule
+    username: postgres
+    password: postgres
 logging:
   level:
     org.springframework.web: debug

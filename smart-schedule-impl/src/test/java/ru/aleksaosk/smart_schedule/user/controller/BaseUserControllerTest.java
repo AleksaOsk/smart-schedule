@@ -20,6 +20,7 @@ import ru.aleksaosk.smart_schedule.user.dto.UserUpdateRequestDto;
 import ru.aleksaosk.smart_schedule.user.service.UserServicePrivate;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Slf4j
 @Profile("test")
@@ -43,12 +44,12 @@ public abstract class BaseUserControllerTest {
     @BeforeEach
     void setUp() {
         userRequestDto = new UserRequestDto("name", "login", "password", "email@mai.ru");
-        user = new User(1L, userRequestDto.getName(), userRequestDto.getLogin(), userRequestDto.getPassword(),
+        user = new User(UUID.randomUUID(), userRequestDto.getName(), userRequestDto.getLogin(), userRequestDto.getPassword(),
                 userRequestDto.getEmail(), LocalDateTime.now());
         userResponseDto = userMapper.mapToUserResponseDto(user);
 
         updatedRequestDto = new UserUpdateRequestDto("name1", "login1", "password1", "email1@mai.ru");
-        updatedUser = new User(1L, updatedRequestDto.getName(), updatedRequestDto.getLogin(),
+        updatedUser = new User(UUID.randomUUID(), updatedRequestDto.getName(), updatedRequestDto.getLogin(),
                 updatedRequestDto.getPassword(), updatedRequestDto.getEmail(), LocalDateTime.now());
         updateResponseDto = userMapper.mapToUserResponseDto(updatedUser);
     }
