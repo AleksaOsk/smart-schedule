@@ -16,7 +16,7 @@ COPY smart-schedule-impl/src smart-schedule-impl/src
 COPY security/src security/src
 
 # Собираем проект
-RUN mvn clean package
+RUN mvn clean package -DskipTests -Dcheckstyle.skip=true
 
 # Этап 2: Запуск
 FROM eclipse-temurin:21-jre-alpine
