@@ -24,7 +24,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-@Table(name = "users", schema = "public")
+@Table(name = "users", schema = "smart_schedule")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

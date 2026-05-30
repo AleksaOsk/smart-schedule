@@ -6,7 +6,7 @@ package ru.aleksaosk.smart_schedule.task;
 // @AllArgsConstructor
 // @NoArgsConstructor(access = AccessLevel.PROTECTED)
 // @ToString
-// @Table(name = "tasks", schema = "public")
+// @Table(name = "tasks", schema = "smart_schedule")
 // @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Task {
 //    @Id
