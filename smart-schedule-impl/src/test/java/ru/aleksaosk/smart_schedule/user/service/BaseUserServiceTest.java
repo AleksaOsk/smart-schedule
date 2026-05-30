@@ -11,9 +11,6 @@ import ru.aleksaosk.smart_schedule.user.UserRepository;
 import ru.aleksaosk.smart_schedule.user.dto.UserRequestDto;
 import ru.aleksaosk.smart_schedule.user.dto.UserResponseDto;
 import ru.aleksaosk.smart_schedule.user.dto.UserUpdateRequestDto;
-import ru.aleksaosk.smart_schedule.user.service.UserService;
-import ru.aleksaosk.smart_schedule.user.service.UserServicePrivate;
-
 import java.time.LocalDateTime;
 import java.util.UUID;
 

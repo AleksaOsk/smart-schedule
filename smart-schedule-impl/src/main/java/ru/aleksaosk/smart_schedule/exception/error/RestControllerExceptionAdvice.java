@@ -15,7 +15,6 @@ import ru.aleksaosk.smart_schedule.exception.EmailAlreadyUsedException;
 import ru.aleksaosk.smart_schedule.exception.LoginAlreadyUsedException;
 import ru.aleksaosk.smart_schedule.exception.NotFoundException;
 import ru.aleksaosk.smart_schedule.exception.ValidationException;
-
 import java.io.UnsupportedEncodingException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

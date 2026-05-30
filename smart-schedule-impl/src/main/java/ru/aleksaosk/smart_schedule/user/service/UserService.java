@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import ru.aleksaosk.smart_schedule.exception.NotFoundException;
 import ru.aleksaosk.smart_schedule.user.User;
 import ru.aleksaosk.smart_schedule.user.UserRepository;
-
 import java.util.Optional;
 
 @Service

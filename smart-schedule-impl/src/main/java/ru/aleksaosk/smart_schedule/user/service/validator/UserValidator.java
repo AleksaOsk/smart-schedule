@@ -2,9 +2,7 @@ package ru.aleksaosk.smart_schedule.user.service.validator;
 
 import ru.aleksaosk.smart_schedule.exception.EmailAlreadyUsedException;
 import ru.aleksaosk.smart_schedule.exception.LoginAlreadyUsedException;
-import ru.aleksaosk.smart_schedule.exception.NotFoundException;
 import ru.aleksaosk.smart_schedule.user.User;
-
 import java.util.Optional;
 
 public class UserValidator {
