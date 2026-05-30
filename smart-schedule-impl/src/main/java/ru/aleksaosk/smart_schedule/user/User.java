@@ -28,7 +28,7 @@ import java.util.UUID;
 @Table(name = "users", schema = "public")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     @NotBlank(message = "user name cannot be empty")
