@@ -6,7 +6,7 @@ package ru.aleksaosk.smart_schedule.work;
 // @AllArgsConstructor
 // @NoArgsConstructor(access = AccessLevel.PROTECTED)
 // @ToString
-// @Table(name = "weekdays", schema = "public")
+// @Table(name = "weekdays", schema = "smart_schedule")
 // @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Day {
 //    @Id
