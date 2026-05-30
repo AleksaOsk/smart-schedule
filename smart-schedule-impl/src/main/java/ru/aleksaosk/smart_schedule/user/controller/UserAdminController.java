@@ -1,16 +1,13 @@
 package ru.aleksaosk.smart_schedule.user.controller;
 
-import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.aleksaosk.smart_schedule.user.controller.api.UserAdminApi;
 import ru.aleksaosk.smart_schedule.user.dto.UserResponseDto;
 import ru.aleksaosk.smart_schedule.user.service.UserServiceAdmin;
-
 import java.util.List;
 
 @RestController
@@ -26,7 +23,7 @@ public class UserAdminController implements UserAdminApi {
     }
 
     @GetMapping("/{userId}")
-    public UserResponseDto getUserDto(@Positive(message = "userId is not correct") @PathVariable("userId") Long id) {
+    public UserResponseDto getUserDto(Long id) {
         return userService.getUserDto(id);
     }
 }
