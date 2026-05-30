@@ -13,12 +13,10 @@ import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 import ru.aleksaosk.smart_schedule.user.User;
 import ru.aleksaosk.smart_schedule.user.UserMapper;
-import ru.aleksaosk.smart_schedule.user.controller.UserPrivateController;
 import ru.aleksaosk.smart_schedule.user.dto.UserRequestDto;
 import ru.aleksaosk.smart_schedule.user.dto.UserResponseDto;
 import ru.aleksaosk.smart_schedule.user.dto.UserUpdateRequestDto;
 import ru.aleksaosk.smart_schedule.user.service.UserServicePrivate;
-
 import java.time.LocalDateTime;
 import java.util.UUID;
 

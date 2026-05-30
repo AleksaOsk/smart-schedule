@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import ru.aleksaosk.smart_schedule.user.UserMapper;
 import ru.aleksaosk.smart_schedule.user.UserRepository;
 import ru.aleksaosk.smart_schedule.user.dto.UserResponseDto;
-
 import java.util.List;
 
 @Service

@@ -1,8 +1,6 @@
 package ru.aleksaosk.smart_schedule.user.controller.api;
 
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -21,41 +19,12 @@ public interface UserPrivateApi {
 
     @Operation(summary = "Создание пользователя")
     @ResponseStatus(HttpStatus.CREATED)
-    @ApiResponse(responseCode = "200", description = "Ok",
-            content = @Content(
-                    examples = {
-                            @ExampleObject(name = "Пример положительного ответа", value = """
-                                    {
-                                      "id": 1,
-                                      "name": "string",
-                                      "login": "string",
-                                      "password": "strings",
-                                      "email": "user@example.com",
-                                      "created": "12:41:46.865 29-01-2026"
-                                    }
-                                    """)
-                    }
-            )
-    )
+    @ApiResponses({
+            @ApiResponse(responseCode = "201", description = "Created")
+    })
     UserResponseDto addNewUser(@RequestBody @Valid UserRequestDto requestDto);
 
     @Operation(summary = "Изменение данных пользователя")
-    @ApiResponse(responseCode = "200", description = "Ok",
-            content = @Content(
-                    examples = {
-                            @ExampleObject(name = "Пример положительного ответа", value = """
-                                    {
-                                      "id": 1,
-                                      "name": "string1",
-                                      "login": "string1",
-                                      "password": "strings1",
-                                      "email": "user1@example.com",
-                                      "created": "12:41:46.865 29-01-2026"
-                                    }
-                                    """)
-                    }
-            )
-    )
     UserResponseDto updateUser(@Positive(message = "incorrect userId") @PathVariable("userId") Long id,
                                @RequestBody @Valid UserUpdateRequestDto requestDto);
 
