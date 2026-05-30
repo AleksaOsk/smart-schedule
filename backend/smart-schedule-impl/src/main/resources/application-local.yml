@@ -20,9 +20,9 @@ spring:
       mode: always
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://aws-1-eu-north-1.pooler.supabase.com:5432/postgres?sslmode=require
-    username: postgres.wvzrzlkszxthnmxwucji
-    password: fBf-y5u-LB5-J49
+    url:
+    username:
+    password:
 logging:
   level:
     org.springframework.web: debug
