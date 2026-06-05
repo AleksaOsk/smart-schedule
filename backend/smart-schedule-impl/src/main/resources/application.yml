@@ -29,8 +29,8 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: ${SUPABASE_URL}/auth/v1
-          jwk-set-uri: ${SUPABASE_URL}/auth/v1/.well-known/jwks.json
+          issuer-uri: ${DB_URL}/auth/v1
+          jwk-set-uri: ${DB_URL}/auth/v1/.well-known/jwks.json
 logging:
   level:
     org.springframework.web: debug
