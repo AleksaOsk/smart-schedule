@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS smart_schedule.users(
-    id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+    id uuid PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     login VARCHAR(50) NOT NULL UNIQUE,
     password VARCHAR(50) NOT NULL,
@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS smart_schedule.weekdays(
 );
 
 CREATE TABLE IF NOT EXISTS smart_schedule.tasks(
-    id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+    id uuid PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     duration int NOT NULL,
     is_only_night BOOLEAN NOT NULL,
