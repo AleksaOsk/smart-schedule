@@ -1,0 +1,125 @@
+.feedback {
+    margin-top: 90px;
+    min-height: 522px;
+}
+
+.formBlock {
+    background: white;
+    border-radius: 32px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 40px;
+}
+
+.formHeader {
+    margin-bottom: 30px;
+}
+
+.formTitle {
+    font-family: 'Segoe UI Emoji', 'Segoe UI', sans-serif;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 40px;
+    letter-spacing: -1px;
+    color: #111827;
+    margin: 0 0 12px 0;
+}
+
+.formSubtitle {
+    font-family: 'Segoe UI Emoji', 'Segoe UI', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 29.3px;
+    letter-spacing: 0;
+    color: rgba(0, 0, 0, 0.5);
+    margin: 0;
+}
+
+.inputGroup {
+    margin-bottom: 30px;
+}
+
+.input,
+.textarea {
+    width: 100%;
+    background: #F7F8FA;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    padding: 20px;
+    font-family: 'Segoe UI Emoji', 'Segoe UI', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: auto;
+    letter-spacing: 0;
+    color: #111827;
+    box-sizing: border-box;
+    outline: none;
+    transition: border 0.2s;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+    color: #999999;
+}
+
+.input:focus,
+.textarea:focus {
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
+.textarea {
+    min-height: 160px;
+    max-height: 500px;
+    resize: vertical;
+    overflow-y: auto;
+}
+
+.submitBtn {
+    width: 150px;
+    height: 56px;
+    background: #111827;
+    border: none;
+    border-radius: 20px;
+    padding: 16px 32px;
+    font-family: 'Segoe UI Emoji', 'Segoe UI', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0;
+    color: white;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.1s;
+}
+
+.submitBtn:hover {
+    opacity: 0.9;
+}
+
+.submitBtn:active {
+    transform: scale(0.97);
+}
+
+.successBlock {
+    background: white;
+    border-radius: 32px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 40px;
+}
+
+.successTitle {
+    font-family: 'Segoe UI Emoji', 'Segoe UI', sans-serif;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 40px;
+    letter-spacing: -1px;
+    color: #111827;
+    margin-bottom: 12px;
+}
+
+.successSubtitle {
+    font-family: 'Segoe UI Emoji', 'Segoe UI', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 29.3px;
+    letter-spacing: 0;
+    color: rgba(0, 0, 0, 0.5);
+}
