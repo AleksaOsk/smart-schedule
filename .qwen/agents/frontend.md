@@ -104,6 +104,14 @@ Frontend
 
 Не merge'и PR.
 
+Перед созданием commit обязательно установи и проверь Git-имя согласно `.qwen/rules/git.md`.
+
+Твоё обязательное имя:
+
+`frontend agent`
+
+Не создавай commit, если `git config --local user.name` возвращает другое имя.
+
 ---
 
 ## 8. Конфликты

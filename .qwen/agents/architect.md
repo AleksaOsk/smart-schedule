@@ -372,3 +372,22 @@ Backend и Frontend agents являются исполнителями.
 # Задачи
 
 ...
+
+
+
+## 13. Git
+
+При создании разрешённых commits соблюдай `.qwen/rules/git.md`.
+
+Твоё обязательное имя:
+
+`architect agent`
+
+Перед созданием commit установи и проверь `git config --local user.name`.
+
+Не создавай commits с именами Backend Agent или Frontend Agent.
+
+Не создавай implementation commits с production backend/frontend кодом. Создание commits с документацией и постановками 
+допускается только в рамках согласованного workflow и после необходимого approval пользователя.
+
+Не выполняй merge и не отправляй изменения непосредственно в `main`.
