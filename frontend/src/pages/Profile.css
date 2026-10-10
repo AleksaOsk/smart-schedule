@@ -1,0 +1,79 @@
+.profile-container {
+    max-width: 800px;
+    margin: 80px auto;
+    padding: 0 20px;
+}
+
+.profile-card {
+    background: white;
+    border-radius: 32px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 40px;
+}
+
+.profile-card h1 {
+    font-family: 'Segoe UI Emoji', sans-serif;
+    font-size: 36px;
+    color: #111827;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.user-info, .backend-info {
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #F7F8FA;
+    border-radius: 20px;
+}
+
+.user-info h2, .backend-info h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #111827;
+}
+
+.user-info p {
+    margin: 8px 0;
+    font-size: 14px;
+    color: #4b5563;
+    word-break: break-all;
+}
+
+.response {
+    padding: 15px;
+    border-radius: 16px;
+    margin-top: 15px;
+}
+
+.response.success {
+    background: #d1fae5;
+    border: 1px solid #10b981;
+}
+
+.response.error {
+    background: #fee2e2;
+    border: 1px solid #ef4444;
+}
+
+.response pre {
+    white-space: pre-wrap;
+    word-break: break-all;
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+.signout-btn {
+    width: 100%;
+    height: 56px;
+    background: #ef4444;
+    border: none;
+    border-radius: 18px;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.signout-btn:hover {
+    opacity: 0.9;
+}

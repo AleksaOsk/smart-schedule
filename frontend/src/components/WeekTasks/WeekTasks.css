@@ -1,0 +1,64 @@
+.section {
+    margin-top: 90px;
+}
+
+.grid {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.card {
+    flex: 1;
+    min-width: 140px;
+    min-height: 240px;
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 28px;
+    padding: 21px;
+}
+
+.cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.day {
+    font-family: 'Segoe UI Emoji', 'Segoe UI', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0;
+    color: rgba(0, 0, 0, 0.4);
+}
+
+.time {
+    font-family: 'Segoe UI Emoji', 'Segoe UI', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0;
+    color: #111827;
+}
+
+.taskTitle {
+    font-family: 'Segoe UI Emoji', 'Segoe UI', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22.5px;
+    letter-spacing: 0;
+    color: #111827;
+    margin-bottom: 8px;
+}
+
+.taskDesc {
+    font-family: 'Segoe UI Emoji', 'Segoe UI', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22.8px;
+    letter-spacing: 0;
+    color: rgba(0, 0, 0, 0.5);
+}
