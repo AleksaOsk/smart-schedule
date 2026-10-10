@@ -70,7 +70,6 @@ export function FeedbackForm({ onSubmit }: FeedbackFormProps) {
       if (onSubmit) {
         await onSubmit(formData)
       } else {
-        // Simulate API call
         await new Promise((resolve) => setTimeout(resolve, 1000))
       }
       setSubmitStatus('success')
@@ -82,17 +81,52 @@ export function FeedbackForm({ onSubmit }: FeedbackFormProps) {
     }
   }
 
+  const inputStyle = {
+    width: '100%',
+    height: '56px',
+    backgroundColor: '#F7F8FA',
+    border: '1px solid rgba(0, 0, 0, 0.1)',
+    borderRadius: '20px',
+    padding: '0 20px',
+    fontFamily: 'Segoe UI Emoji',
+    fontSize: '16px',
+    fontWeight: 400,
+    lineHeight: '17.12px',
+    color: '#111827',
+    outline: 'none',
+    boxSizing: 'border-box',
+  }
+
+  const textareaStyle = {
+    ...inputStyle,
+    height: '160px',
+    padding: '16px 20px',
+    resize: 'none',
+    lineHeight: '1.5',
+  }
+
+  const labelStyle = {
+    fontFamily: 'Segoe UI Emoji',
+    fontSize: '16px',
+    fontWeight: 400,
+    lineHeight: '17.12px',
+    color: '#999999',
+  }
+
   return (
-    <form className="feedback-form" onSubmit={handleSubmit} noValidate>
-      <div className="feedback-form__field">
-        <label htmlFor="name" className="feedback-form__label">
-          Имя <span className="feedback-form__required" aria-hidden="true">*</span>
+    <form className="feedback-form" onSubmit={handleSubmit} noValidate style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '28.5px' }}>
+      <div className="feedback-form__field" style={{ width: '100%' }}>
+        <label htmlFor="name" className="feedback-form__label" style={labelStyle}>
+          Имя
         </label>
         <input
           type="text"
           id="name"
           name="name"
-          className={`feedback-form__input ${errors.name ? 'feedback-form__input--error' : ''}`}
+          style={{
+            ...inputStyle,
+            borderColor: errors.name ? '#EF4444' : 'rgba(0, 0, 0, 0.1)',
+          }}
           value={formData.name}
           onChange={handleChange}
           placeholder="Ваше имя"
@@ -102,82 +136,102 @@ export function FeedbackForm({ onSubmit }: FeedbackFormProps) {
           disabled={isSubmitting}
         />
         {errors.name && (
-          <span id="name-error" className="feedback-form__error" role="alert">
+          <span id="name-error" className="feedback-form__error" role="alert" style={{ color: '#EF4444', fontSize: '14px', marginTop: '4px' }}>
             {errors.name}
           </span>
         )}
       </div>
 
-      <div className="feedback-form__field">
-        <label htmlFor="email" className="feedback-form__label">
-          Email <span className="feedback-form__required" aria-hidden="true">*</span>
+      <div className="feedback-form__field" style={{ width: '100%' }}>
+        <label htmlFor="email" className="feedback-form__label" style={labelStyle}>
+          Email
         </label>
         <input
           type="email"
           id="email"
           name="email"
-          className={`feedback-form__input ${errors.email ? 'feedback-form__input--error' : ''}`}
+          style={{
+            ...inputStyle,
+            borderColor: errors.email ? '#EF4444' : 'rgba(0, 0, 0, 0.1)',
+          }}
           value={formData.email}
           onChange={handleChange}
-          placeholder="your@email.com"
+          placeholder="Email"
           aria-required="true"
           aria-invalid={!!errors.email}
           aria-describedby={errors.email ? 'email-error' : undefined}
           disabled={isSubmitting}
         />
         {errors.email && (
-          <span id="email-error" className="feedback-form__error" role="alert">
+          <span id="email-error" className="feedback-form__error" role="alert" style={{ color: '#EF4444', fontSize: '14px', marginTop: '4px' }}>
             {errors.email}
           </span>
         )}
       </div>
 
-      <div className="feedback-form__field">
-        <label htmlFor="message" className="feedback-form__label">
-          Сообщение <span className="feedback-form__required" aria-hidden="true">*</span>
+      <div className="feedback-form__field" style={{ width: '100%' }}>
+        <label htmlFor="message" className="feedback-form__label" style={labelStyle}>
+          Сообщение
         </label>
         <textarea
           id="message"
           name="message"
-          className={`feedback-form__textarea ${errors.message ? 'feedback-form__textarea--error' : ''}`}
+          style={{
+            ...textareaStyle,
+            borderColor: errors.message ? '#EF4444' : 'rgba(0, 0, 0, 0.1)',
+          }}
           value={formData.message}
           onChange={handleChange}
           placeholder="Ваше сообщение..."
-          rows={5}
           aria-required="true"
           aria-invalid={!!errors.message}
           aria-describedby={errors.message ? 'message-error' : 'message-hint'}
           disabled={isSubmitting}
         />
         {errors.message ? (
-          <span id="message-error" className="feedback-form__error" role="alert">
+          <span id="message-error" className="feedback-form__error" role="alert" style={{ color: '#EF4444', fontSize: '14px', marginTop: '4px' }}>
             {errors.message}
           </span>
         ) : (
-          <span id="message-hint" className="feedback-form__hint">
+          <span id="message-hint" className="feedback-form__hint" style={{ color: '#999999', fontSize: '14px', marginTop: '4px' }}>
             Минимум 10 символов
           </span>
         )}
       </div>
 
-      <div className="feedback-form__submit-wrapper">
+      <div className="feedback-form__submit-wrapper" style={{ width: '100%', display: 'flex', justifyContent: 'flex-start' }}>
         <button
           type="submit"
           className="feedback-form__submit"
           disabled={isSubmitting}
+          style={{
+            width: '150px',
+            height: '56px',
+            backgroundColor: '#111827',
+            border: 'none',
+            borderRadius: '20px',
+            padding: '16px 32px',
+            fontFamily: 'Segoe UI Emoji',
+            fontSize: '16px',
+            fontWeight: 400,
+            lineHeight: '24px',
+            color: '#FFFFFF',
+            cursor: isSubmitting ? 'not-allowed' : 'pointer',
+            opacity: isSubmitting ? 0.7 : 1,
+          }}
         >
           {isSubmitting ? 'Отправка...' : 'Отправить'}
         </button>
       </div>
 
       {submitStatus === 'success' && (
-        <div className="feedback-form__success" role="status" aria-live="polite">
+        <div className="feedback-form__success" role="status" aria-live="polite" style={{ color: '#10B981', fontSize: '16px', marginTop: '16px' }}>
           Спасибо! Ваше сообщение отправлено.
         </div>
       )}
 
       {submitStatus === 'error' && (
-        <div className="feedback-form__error-message" role="alert">
+        <div className="feedback-form__error-message" role="alert" style={{ color: '#EF4444', fontSize: '16px', marginTop: '16px' }}>
           Произошла ошибка. Попробуйте позже.
         </div>
       )}

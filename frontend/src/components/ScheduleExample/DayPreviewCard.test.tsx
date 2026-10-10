@@ -1,63 +1,56 @@
 import { render, screen } from '@testing-library/react'
 import { DayPreviewCard, DAYS_DATA } from './DayPreviewCard'
 import { ScheduleExample } from './ScheduleExample'
+import { Hero } from './Hero'
 
 describe('DayPreviewCard', () => {
-  const defaultProps = {
-    day: 'Понедельник',
-    dayShort: 'Пн',
-    isWeekend: false,
-    hasTasks: true,
-    taskCount: 3,
-  }
-
-  it('renders day names correctly', () => {
-    render(<DayPreviewCard {...defaultProps} />)
+  it('renders day short name correctly', () => {
+    render(<DayPreviewCard day="Понедельник" dayShort="Пн" />)
     expect(screen.getByText('Пн')).toBeInTheDocument()
-    expect(screen.getByText('Понедельник')).toBeInTheDocument()
   })
 
-  it('renders tasks when hasTasks is true', () => {
-    render(<DayPreviewCard {...defaultProps} taskCount={3} />)
-    expect(screen.getByText('Задача 1')).toBeInTheDocument()
-    expect(screen.getByText('Задача 2')).toBeInTheDocument()
-    expect(screen.getByText('Задача 3')).toBeInTheDocument()
+  it('renders time when provided', () => {
+    render(<DayPreviewCard day="Понедельник" dayShort="Пн" time="09:00" />)
+    expect(screen.getByText('09:00')).toBeInTheDocument()
   })
 
-  it('renders empty state when hasTasks is false', () => {
-    render(<DayPreviewCard {...defaultProps} hasTasks={false} taskCount={0} />)
+  it('renders title and description when provided', () => {
+    render(<DayPreviewCard
+      day="Понедельник"
+      dayShort="Пн"
+      title="Оплатить сервер"
+      description="Ежемесячная оплата инфраструктуры"
+    />)
+    expect(screen.getByText('Оплатить сервер')).toBeInTheDocument()
+    expect(screen.getByText('Ежемесячная оплата инфраструктуры')).toBeInTheDocument()
+  })
+
+  it('renders empty state for weekday without task data', () => {
+    render(<DayPreviewCard day="Понедельник" dayShort="Пн" />)
     expect(screen.getByText('Нет задач')).toBeInTheDocument()
   })
 
-  it('shows "+N ещё" when taskCount > 3', () => {
-    render(<DayPreviewCard {...defaultProps} taskCount={5} />)
-    expect(screen.getByText('+2 ещё')).toBeInTheDocument()
+  it('does not render empty state for weekend (Figma shows empty cards)', () => {
+    render(<DayPreviewCard day="Суббота" dayShort="Сб" isWeekend />)
+    expect(screen.queryByText('Нет задач')).not.toBeInTheDocument()
   })
 
   it('applies weekend class when isWeekend is true', () => {
-    const { container } = render(<DayPreviewCard {...defaultProps} isWeekend />)
+    const { container } = render(<DayPreviewCard day="Суббота" dayShort="Сб" isWeekend />)
     const card = container.querySelector('article')
     expect(card).toHaveClass('day-preview-card--weekend')
   })
 
   it('does not apply weekend class when isWeekend is false', () => {
-    const { container } = render(<DayPreviewCard {...defaultProps} isWeekend={false} />)
+    const { container } = render(<DayPreviewCard day="Понедельник" dayShort="Пн" isWeekend={false} />)
     const card = container.querySelector('article')
     expect(card).not.toHaveClass('day-preview-card--weekend')
   })
 
-  it('has correct role and accessibility attributes', () => {
-    render(<DayPreviewCard {...defaultProps} />)
+  it('has correct role', () => {
+    render(<DayPreviewCard day="Понедельник" dayShort="Пн" />)
     const card = screen.getByRole('article')
     expect(card).toBeInTheDocument()
-    const taskList = screen.getByRole('list', { name: 'Задачи на Понедельник' })
-    expect(taskList).toBeInTheDocument()
-  })
-
-  it('limits displayed tasks to 3', () => {
-    render(<DayPreviewCard {...defaultProps} taskCount={10} />)
-    const taskItems = screen.getAllByRole('listitem')
-    expect(taskItems).toHaveLength(4) // 3 tasks + 1 "more" item
   })
 })
 
@@ -82,28 +75,31 @@ describe('DAYS_DATA', () => {
     expect(DAYS_DATA[0].isWeekend).toBe(false) // Понедельник
   })
 
-  it('has task counts for weekdays', () => {
+  it('has task data for weekdays', () => {
     for (let i = 0; i < 5; i++) {
-      expect(DAYS_DATA[i].hasTasks).toBe(true)
-      expect(DAYS_DATA[i].taskCount).toBeGreaterThan(0)
+      expect(DAYS_DATA[i].title).toBeDefined()
+      expect(DAYS_DATA[i].description).toBeDefined()
+      expect(DAYS_DATA[i].time).toBeDefined()
     }
   })
 
-  it('has no tasks for weekend', () => {
-    expect(DAYS_DATA[5].hasTasks).toBe(false)
-    expect(DAYS_DATA[6].hasTasks).toBe(false)
+  it('has no task data for weekend', () => {
+    expect(DAYS_DATA[5].title).toBeUndefined()
+    expect(DAYS_DATA[6].title).toBeUndefined()
+  })
+
+  it('has correct task data for Monday', () => {
+    expect(DAYS_DATA[0].time).toBe('09:00')
+    expect(DAYS_DATA[0].title).toBe('Оплатить сервер')
+    expect(DAYS_DATA[0].description).toBe('Ежемесячная оплата инфраструктуры')
   })
 })
 
 describe('ScheduleExample', () => {
-  it('renders section with title', () => {
+  it('renders Hero section', () => {
     render(<ScheduleExample />)
-    expect(screen.getByRole('heading', { name: 'Пример расписания на неделю' })).toBeInTheDocument()
-  })
-
-  it('renders description', () => {
-    render(<ScheduleExample />)
-    expect(screen.getByText('Это пример того, как может выглядеть ваше расписание. После входа вы сможете создать своё.')).toBeInTheDocument()
+    expect(screen.getByText('Планировщик повторяющихся задач.')).toBeInTheDocument()
+    expect(screen.getByText('SmartSchedule автоматически собирает рабочее расписание, распределяет регулярные задачи и помогает ничего не забыть.')).toBeInTheDocument()
   })
 
   it('renders 7 DayPreviewCard components', () => {
@@ -120,9 +116,6 @@ describe('ScheduleExample', () => {
 
   it('has correct semantic structure', () => {
     render(<ScheduleExample />)
-    const section = screen.getByRole('region', { name: 'Пример расписания на неделю' })
-    expect(section).toBeInTheDocument()
-    // Контейнер карточек не должен иметь role="list" - это просто обёртка для карточек
     const cardsContainer = screen.getByTestId('schedule-cards-container')
     expect(cardsContainer).toBeInTheDocument()
   })
@@ -131,5 +124,20 @@ describe('ScheduleExample', () => {
     const { container } = render(<ScheduleExample />)
     const cardsContainer = container.querySelector('.schedule-example__cards')
     expect(cardsContainer).toHaveStyle({ scrollSnapType: 'x mandatory' })
+  })
+})
+
+describe('Hero', () => {
+  it('renders title and description', () => {
+    render(<Hero />)
+    expect(screen.getByText('Планировщик повторяющихся задач.')).toBeInTheDocument()
+    expect(screen.getByText('SmartSchedule автоматически собирает рабочее расписание, распределяет регулярные задачи и помогает ничего не забыть.')).toBeInTheDocument()
+  })
+
+  it('has correct heading level', () => {
+    render(<Hero />)
+    const heading = screen.getByRole('heading', { level: 1 })
+    expect(heading).toBeInTheDocument()
+    expect(heading).toHaveTextContent('Планировщик повторяющихся задач.')
   })
 })

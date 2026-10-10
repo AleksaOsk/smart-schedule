@@ -10,7 +10,9 @@ export function Header({ onLoginClick }: HeaderProps) {
   return (
     <header className="header" role="banner">
       <div className="header-container">
-        <Logo size={40} ariaLabel="SmartSchedule — умное планирование" />
+        <div className="header-left">
+          <Logo size={40} ariaLabel="SmartSchedule — умное планирование" />
+        </div>
         <nav className="header-nav" aria-label="Основная навигация">
           <LoginButton onClick={onLoginClick} />
         </nav>

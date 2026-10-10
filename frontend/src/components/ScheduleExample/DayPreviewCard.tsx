@@ -3,53 +3,92 @@ import './DayPreviewCard.css'
 interface DayPreviewCardProps {
   day: string
   dayShort: string
+  time?: string
+  title?: string
+  description?: string
   isWeekend?: boolean
-  hasTasks?: boolean
-  taskCount?: number
 }
 
 export function DayPreviewCard({
-  day,
+  day: _day,
   dayShort,
+  time,
+  title,
+  description,
   isWeekend = false,
-  hasTasks = true,
-  taskCount = 3,
 }: DayPreviewCardProps) {
   return (
     <article className={`day-preview-card ${isWeekend ? 'day-preview-card--weekend' : ''}`}>
       <header className="day-preview-card__header">
         <span className="day-preview-card__day-short">{dayShort}</span>
-        <span className="day-preview-card__day-full">{day}</span>
+        {time && <span className="day-preview-card__time">{time}</span>}
       </header>
-      <div className="day-preview-card__tasks" role="list" aria-label={`Задачи на ${day}`}>
-        {hasTasks ? (
-          Array.from({ length: Math.min(taskCount, 3) }, (_, i) => (
-            <div key={i} className="day-preview-card__task" role="listitem">
-              <span className="day-preview-card__task-indicator" aria-hidden="true" />
-              <span className="day-preview-card__task-text">Задача {i + 1}</span>
-            </div>
-          ))
-        ) : (
-          <div className="day-preview-card__empty" role="listitem">
-            <span className="day-preview-card__empty-text">Нет задач</span>
-          </div>
-        )}
-        {taskCount > 3 && (
-          <div className="day-preview-card__more" role="listitem">
-            <span className="day-preview-card__more-text">+{taskCount - 3} ещё</span>
-          </div>
-        )}
-      </div>
+      {title && (
+        <div className="day-preview-card__content">
+          <h3 className="day-preview-card__title">{title}</h3>
+          {description && (
+            <p className="day-preview-card__description">{description}</p>
+          )}
+        </div>
+      )}
+      {!title && !isWeekend && (
+        <div className="day-preview-card__empty">
+          <span className="day-preview-card__empty-text">Нет задач</span>
+        </div>
+      )}
     </article>
   )
 }
 
 export const DAYS_DATA = [
-  { day: 'Понедельник', dayShort: 'Пн', isWeekend: false, hasTasks: true, taskCount: 4 },
-  { day: 'Вторник', dayShort: 'Вт', isWeekend: false, hasTasks: true, taskCount: 3 },
-  { day: 'Среда', dayShort: 'Ср', isWeekend: false, hasTasks: true, taskCount: 5 },
-  { day: 'Четверг', dayShort: 'Чт', isWeekend: false, hasTasks: true, taskCount: 2 },
-  { day: 'Пятница', dayShort: 'Пт', isWeekend: false, hasTasks: true, taskCount: 3 },
-  { day: 'Суббота', dayShort: 'Сб', isWeekend: true, hasTasks: false, taskCount: 0 },
-  { day: 'Воскресенье', dayShort: 'Вс', isWeekend: true, hasTasks: false, taskCount: 0 },
+  {
+    day: 'Понедельник',
+    dayShort: 'Пн',
+    time: '09:00',
+    title: 'Оплатить сервер',
+    description: 'Ежемесячная оплата инфраструктуры',
+    isWeekend: false,
+  },
+  {
+    day: 'Вторник',
+    dayShort: 'Вт',
+    time: '12:00',
+    title: 'Созвон с командой',
+    description: 'Еженедельный sync meeting',
+    isWeekend: false,
+  },
+  {
+    day: 'Среда',
+    dayShort: 'Ср',
+    time: '15:00',
+    title: 'Проверить бэкапы',
+    description: 'Автоматическая проверка раз в неделю',
+    isWeekend: false,
+  },
+  {
+    day: 'Четверг',
+    dayShort: 'Чт',
+    time: '10:00',
+    title: 'Код-ревью',
+    description: 'Ежедневная практика',
+    isWeekend: false,
+  },
+  {
+    day: 'Пятница',
+    dayShort: 'Пт',
+    time: '14:00',
+    title: 'Планерка спринта',
+    description: 'Двухнедельная встреча',
+    isWeekend: false,
+  },
+  {
+    day: 'Суббота',
+    dayShort: 'Сб',
+    isWeekend: true,
+  },
+  {
+    day: 'Воскресенье',
+    dayShort: 'Вс',
+    isWeekend: true,
+  },
 ] as const

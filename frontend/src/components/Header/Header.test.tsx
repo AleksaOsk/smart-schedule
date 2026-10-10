@@ -24,14 +24,12 @@ describe('Logo', () => {
     expect(svg).toBeInTheDocument()
   })
 
-  it('contains the correct SVG structure', () => {
+  it('contains the correct SVG structure (3 paths)', () => {
     render(<Logo />)
     const svg = screen.getByRole('img')
     expect(svg).toBeInTheDocument()
-    const rect = svg.querySelector('rect')
-    const path = svg.querySelector('path')
-    expect(rect).toBeInTheDocument()
-    expect(path).toBeInTheDocument()
+    const paths = svg.querySelectorAll('path')
+    expect(paths).toHaveLength(3)
   })
 })
 
